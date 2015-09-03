@@ -8,8 +8,8 @@ module.exports = function(sequelize, DataTypes) {
 	}, {
 		classMethods: {
 			associate: function(models){
-				STORES.hasOne(models.INFO, {as: 'storeID'});
-        STORES.hasOne(models.TOKENS, {as: 'storeID'});
+				STORES.hasOne(models.INFO, {foreignKey: 'storeID'});
+        STORES.hasOne(models.TOKENS, {foreignKey: 'storeID'});
 			}
 		}
 	});
