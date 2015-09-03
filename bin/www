@@ -4,6 +4,7 @@ var debug = require('debug')('express-example');
 var app = require('../app');
 var models = require("../models");
 var http = require('http');
+var i = require('../util/io.js');
 
 
 
@@ -30,7 +31,6 @@ models.sequelize.sync().then(function () {
   var server = http.createServer(app);
   io = require("socket.io").listen(server);
   server.listen(3000);
-  require('../lib/io.js');
   console.log(3000);
-  io.messageSummary("jake's test");
+  i.messageSummary("jake's test");
 });
