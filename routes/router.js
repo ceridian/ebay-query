@@ -8,6 +8,7 @@ module.exports = function(app) {
 
   app.post('/messages', function(req, res){
     var body = JSON.prase(req.body);
+    console.log(body);
     lib.messageSummary(body.store, function(err, data){
       if(err){
         res.send(err);
