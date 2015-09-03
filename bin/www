@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var debug = require('debug')('express-example');
+var debug = require('debug')('ebay-messages');
 var app = require('../app');
 var models = require("../models");
 var http = require('http');
@@ -33,5 +33,4 @@ models.sequelize.sync().then(function () {
   io = require("socket.io").listen(server);
   server.listen(3000);
   console.log(3000);
-  lib.messageSummary("jakes");
 });
