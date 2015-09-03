@@ -19,7 +19,7 @@ e.postXML(params, opType, serviceName, function(err, data){
   if(err){
     console.log(err);
   }else{
-    console.log(data);
+    console.log(JSON.stringify(data));
   }
 });
 /*app.set('port', process.env.PORT || 3000);
