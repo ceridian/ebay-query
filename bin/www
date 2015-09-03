@@ -32,5 +32,5 @@ models.sequelize.sync().then(function () {
   io = require("socket.io").listen(server);
   server.listen(3000);
   console.log(3000);
-  i.messageSummary("jake's test");
+  i.messageSummary("jakes");
 });
