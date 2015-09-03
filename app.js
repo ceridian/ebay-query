@@ -18,4 +18,25 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 require('./routes/router.js')(app);
 
+app.get('/404', function(req, res, next){
+  next();
+});
+
+// 404
+
+app.use(function(req, res, next){
+  res.redirect('/');
+});
+
+// error handlers
+
+app.use(function(err, req, res, next) {
+  if(err){
+  	res.status(err.status || 500);
+  	res.send(err);
+  }else{
+    res.redirect('/');
+  }
+});
+
 module.exports = app;
