@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
 	}, {
 		classMethods: {
 			associate: function(models){
-				TOKENS.belongsTo(models.STORES);
+				TOKENS.belongsTo(models.STORES, as 'token');
 			}
 		}
 	});
