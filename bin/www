@@ -14,7 +14,8 @@ models.sequelize.sync().then(function () {
   io.on('connection', function(socket){
   	console.log('connected io');
   });
-  debug('Express server listening on port ' + server.address().port);
+  console.log(3000);
+  //debug('Express server listening on port ' + server.address().port);
   /*var server = app.listen(app.get('port'), function() {
     io = require("socket.io").listen(server);
     require('../lib/io.js');
