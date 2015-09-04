@@ -1,5 +1,5 @@
 
-angular.module('phonecatApp', [])
+angular.module('msg', [])
 .controller('EmailCtrl', ['$scope' '$http', function($scope, $http){
 
   $scope.emails = [];
