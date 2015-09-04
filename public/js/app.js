@@ -1,18 +1,26 @@
 
-angular.module('msg', [])
-.controller('EmailCtrl', function($scope, $http){
+angular.module('msg', ['ui.bootstrap'])
+.controller('EmailCtrl', function($scope, $http, $modal){
 
   $scope.emails = [];
 	$scope.isPopupVisible = false;
 
   $scope.showPopup = function(email) {
     console.log(email);
-    $scope.isPopupVisible = true;
     $scope.selectedEmail = email;
+    //$scope.isPopupVisible = true;
+    //$scope.selectedEmail = email;
+    var modalInstance = $modal.open({
+      templateUrl: '../temps/email.html',
+      controller: 'ModalCtrl',
+      resolve: {
+
+      }
+    });
   };
 
   $scope.closePopup = function() {
-      $scope.isPopupVisible = false;
+
   };
 
   $scope.messages = function(){
@@ -25,4 +33,11 @@ angular.module('msg', [])
 		});
   }
   $scope.messages();
+}).controller('ModalCtrl', function($scope, $modalInstance){
+  $scope.ok = function () {
+    $modalInstance.close();
+  };
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
 });

@@ -1,0 +1,22 @@
+<div class="modal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="closePopup()">&times;</button>
+    <h3>{{selectedEmail.Subject}}</h3>
+  </div>
+  <div class="modal-body">
+    <strong>From:</strong> {{selectedEmail.Sender}}<br />
+    <strong>Date:</strong> {{selectedEmail.ReceiveDate}}<br />
+    <br />
+    <p>
+      Hey You, <br />
+      <br />
+      How you doing?<br />
+      <br />
+      Sincerely<br />
+      Your Bro
+    </p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-primary" ng-click="closePopup()">Close</a>
+  </div>
+</div>
