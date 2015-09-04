@@ -6,8 +6,9 @@ angular.module('msg', [])
 	$scope.isPopupVisible = false;
 
   $scope.showPopup = function(email) {
-      $scope.isPopupVisible = true;
-      $scope.selectedEmail = email;
+    console.log(email);
+    $scope.isPopupVisible = true;
+    $scope.selectedEmail = email;
   };
 
   $scope.closePopup = function() {
