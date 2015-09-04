@@ -151,9 +151,11 @@
                   </thead>
                   <tbody ng-controller="EmailCtrl">
                     <tr ng-repeat="email in emails" ng-click="showPopup(email)">
-                      <td>{{ email.from }}</td>
-                      <td>{{ email.subject }}</td>
-                      <td>{{ email.date }}</td>
+                      <td>{{ email.Flagged }}</td>
+                      <td>{{ email.RecipientUserID }}</td>
+                      <td>{{ email.Sender }}</td>
+                      <td>{{ email.Subject }}</td>
+                      <td>{{ email.ReceiveDate }}</td>
                     </tr>
                   </tbody>
                 </table>
