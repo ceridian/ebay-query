@@ -1,6 +1,6 @@
 
-angular.module('msg', [])
-.controller('EmailCtrl', function($scope, $http, ModalService){
+angular.module('msg', ['bootstrap.ui'])
+.controller('EmailCtrl', function($scope, $http, $modal){
 
   $scope.emails = [];
 	$scope.isPopupVisible = false;
