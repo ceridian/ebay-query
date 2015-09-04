@@ -1,5 +1,5 @@
 
-angular.module('msg', ['angularModalService'])
+angular.module('msg', [])
 .controller('EmailCtrl', function($scope, $http, ModalService){
 
   $scope.emails = [];
@@ -7,14 +7,18 @@ angular.module('msg', ['angularModalService'])
 
   $scope.showPopup = function(email) {
     console.log(email);
-    ModalService.showModal({
+    var modalInstance = $modal.open({
       templateUrl: '/temps/email.html',
-      controller: "ModalCtrl"
-    }).then(function(modal) {
-      modal.element.modal();
-      modal.close.then(function(result) {
-        $scope.message = "You said " + result;
-      });
+      controller: 'ModalCtrl',
+      resolve: {
+
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      $scope.selected = selectedItem;
+    }, function () {
+      console.log('Modal dismissed at: ' + new Date());
     });
   };
 
@@ -32,8 +36,18 @@ angular.module('msg', ['angularModalService'])
 		});
   }
   $scope.messages();
-}).controller('ModalCtrl', function($scope, close){
-  $scope.close = function(result) {
-   	close(result, 500); // close, but give 500ms for bootstrap to animate
-   };
+}).controller('ModalCtrl', function ($scope, $modalInstance, items) {
+
+  $scope.items = items;
+  $scope.selected = {
+    item: $scope.items[0]
+  };
+
+  $scope.ok = function () {
+    $modalInstance.close($scope.selected.item);
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
 });
