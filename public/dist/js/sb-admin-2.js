@@ -36,6 +36,7 @@ $('document').ready(function(){
     method: 'POST',
     data: {store: 'jakes'}
   }).done(function(data){
+    console.log(data);
     var messages = data.Messages.Message;
     var hold = '<tbody>';
     for(var i = 0; i < messages.length; i++){
