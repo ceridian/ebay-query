@@ -1,6 +1,8 @@
 
 angular.module('phonecatApp', [])
 .controller('EmailCtrl', ['$scope' '$http', function($scope, $http){
+
+  $scope.emails = [];
 	$scope.isPopupVisible = false;
 
   $scope.showPopup = function(email) {
