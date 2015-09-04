@@ -13,6 +13,7 @@ angular.module('msg', ['ui.bootstrap'])
     var modalInstance = $modal.open({
       templateUrl: '../temps/email.html',
       controller: 'ModalCtrl',
+      size: 'lg',
       resolve: {
 
       }
