@@ -1,6 +1,6 @@
 
 angular.module('msg', [])
-.controller('EmailCtrl', ['$scope' '$http', function($scope, $http){
+.controller('EmailCtrl', function($scope, $http){
 
   $scope.emails = [];
 	$scope.isPopupVisible = false;
@@ -26,5 +26,4 @@ angular.module('msg', [])
       console.log(data.status);
 		});
   }
-
-} ]);
+});
