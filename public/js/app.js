@@ -16,8 +16,10 @@ angular.module('msg', [])
 
   $scope.messages = function(){
     $http.post('/messages', {store: 'jakes'}).success(function(data, status, headers, config){
+      console.log(status);
       if(status == 'ok'){
         console.log(data);
+        console.log(data.Messages.Message);
         $scope.emails = data.Messages.Message;
       }else{
         console.log(data);
