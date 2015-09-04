@@ -1,22 +1,20 @@
 
-angular.module('msg', ['ui.bootstrap'])
-.controller('EmailCtrl', function($scope, $http, $modal){
+angular.module('msg', ['angularModalService'])
+.controller('EmailCtrl', function($scope, $http, ModalService){
 
   $scope.emails = [];
 	$scope.isPopupVisible = false;
 
   $scope.showPopup = function(email) {
     console.log(email);
-    $scope.selectedEmail = email;
-    //$scope.isPopupVisible = true;
-    //$scope.selectedEmail = email;
-    var modalInstance = $modal.open({
-      templateUrl: '../temps/email.html',
-      controller: 'ModalCtrl',
-      size: 'lg',
-      resolve: {
-
-      }
+    ModalService.showModal({
+      templateUrl: '/temps/email.html',
+      controller: "ModalCtrl"
+    }).then(function(modal) {
+      modal.element.modal();
+      modal.close.then(function(result) {
+        $scope.message = "You said " + result;
+      });
     });
   };
 
@@ -34,11 +32,8 @@ angular.module('msg', ['ui.bootstrap'])
 		});
   }
   $scope.messages();
-}).controller('ModalCtrl', function($scope, $modalInstance){
-  $scope.ok = function () {
-    $modalInstance.close();
-  };
-  $scope.cancel = function () {
-    $modalInstance.dismiss('cancel');
-  };
+}).controller('ModalCtrl', function($scope, close){
+  $scope.close = function(result) {
+   	close(result, 500); // close, but give 500ms for bootstrap to animate
+   };
 });
