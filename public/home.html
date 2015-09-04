@@ -149,8 +149,8 @@
                       <th>Received</th>
                     </tr>
                   </thead>
-                  <tbody ng-controller="EmailCtrl as ctrl">
-                    <tr ng-repeat="email in ctrl.emails" ng-click="showPopup(email)">
+                  <tbody ng-controller="EmailCtrl">
+                    <tr ng-repeat="email in emails" ng-click="showPopup(email)">
                       <td>{{ email.from }}</td>
                       <td>{{ email.subject }}</td>
                       <td>{{ email.date }}</td>
