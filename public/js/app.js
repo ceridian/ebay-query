@@ -11,7 +11,9 @@ angular.module('msg', ['bootstrap.ui'])
       templateUrl: '/temps/email.html',
       controller: 'ModalCtrl',
       resolve: {
-
+        emails: function () {
+          return $scope.emails;
+        }
       }
     });
 
@@ -36,15 +38,15 @@ angular.module('msg', ['bootstrap.ui'])
 		});
   }
   $scope.messages();
-}).controller('ModalCtrl', function ($scope, $modalInstance, items) {
+}).controller('ModalCtrl', function ($scope, $modalInstance, emails) {
 
-  $scope.items = items;
+  $scope.emails = emails;
   $scope.selected = {
-    item: $scope.items[0]
+    item: $scope.emails[0]
   };
 
   $scope.ok = function () {
-    $modalInstance.close($scope.selected.item);
+    $modalInstance.close($scope.selected.email);
   };
 
   $scope.cancel = function () {
