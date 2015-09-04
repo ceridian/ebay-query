@@ -36,8 +36,14 @@ $('document').ready(function(){
     method: 'POST',
     data: {store: 'jakes'}
   }).done(function(data){
-
-    console.log(data);
+    var messages = data.Messages.Message;
+    var hold = '<tbody>';
+    for(var i = 0; i < messages.length; i++;){
+      var msg = messages[i];
+      hold += '<tr><td>'+msg.Flagged+'</td><td>'+msg.HighPriority+'</td><td>'+msg.RecipientUserID+'</td><td>'+msg.Sender+'</td><td>'+msg.Subject+'</td><td>'+msg.ReceiveDate+'</td></tr>';
+    }
+    hold += '</tbody>';
+    $('#mailTable').append(hold);
     $('#mailTable').DataTable({
       responsive: true
     });

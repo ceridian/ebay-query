@@ -175,7 +175,18 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                           <div class="dataTable_wrapper">
-                              <table class="table table-striped table-bordered table-hover" id="mailTable"></table>
+                              <table class="table table-striped table-bordered table-hover" id="mailTable">
+                                <thead>
+                                  <tr>
+                                    <th>Flagged</th>
+                                    <th>Priority</th>
+                                    <th>UserID</th>
+                                    <th>Sender</th>
+                                    <th>Subject</th>
+                                    <th>Received</th>
+                                  </tr>
+                                </thead>
+                              </table>
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -200,6 +211,8 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 
 </body>
 
