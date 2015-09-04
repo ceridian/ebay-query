@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script>
+      var socket = io();
+    </script>
+  </head>
+  <body>
+    <script>
+      $('document').ready(function(){
+        $.ajax({
+          url: '/messages',
+          method: 'POST',
+          data: {store: 'jakes'}
+        }).done(function(data){
+          console.log(data);
+        });
+      });
+    </script>
+    <h1>Test</h1>
+  </body>
+</html>
