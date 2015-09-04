@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -149,6 +149,13 @@
                       <th>Received</th>
                     </tr>
                   </thead>
+                  <tbody ng-controller="EmailCtrl">
+                    <tr ng-repeat="email in emails" ng-click="showPopup(email)">
+                      <td>{{ email.from }}</td>
+                      <td>{{ email.subject }}</td>
+                      <td>{{ email.date }}</td>
+                    </tr>
+                  </tbody>
                 </table>
               </div>
             </div>
