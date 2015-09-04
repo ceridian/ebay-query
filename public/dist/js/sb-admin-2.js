@@ -34,3 +34,17 @@ $(function() {
         element.addClass('active');
     }
 });
+
+$('document').ready(function(){
+  $.ajax({
+    url: '/messages',
+    method: 'POST',
+    data: {store: 'jakes'}
+  }).done(function(data){
+
+    console.log(data);
+    $('#mailTable').DataTable({
+      responsive: true
+    });
+  });
+});
