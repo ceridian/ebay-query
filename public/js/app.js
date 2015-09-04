@@ -26,4 +26,5 @@ angular.module('msg', [])
       console.log(data.status);
 		});
   }
+  $scope.messages();
 });
