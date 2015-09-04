@@ -159,8 +159,9 @@
                     </tr>
                   </tbody>
                 </table>
-                <div class="modal" ng-show="EmailCtrl.isPopupVisible">
-                  <div class="modal-header">
+                <div class="modal">
+                  {{isPopupVisible}}
+                  <!--<div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="closePopup()">&times;</button>
                     <h3>{{selectedEmail.Subject}}</h3>
                   </div>
@@ -179,7 +180,7 @@
                   </div>
                   <div class="modal-footer">
                     <a href="#" class="btn btn-primary" ng-click="closePopup()">Close</a>
-                  </div>
+                  </div>-->
                 </div>
               </div>
             </div>
