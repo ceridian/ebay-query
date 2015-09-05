@@ -28,7 +28,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat="email in emails" ng-click="showPopup(email)">
+                  <tr ng-repeat="email in emails" ng-click="open(email)">
                     <td>{{ email.Flagged }}</td>
                     <td>{{ email.RecipientUserID }}</td>
                     <td>{{ email.Sender }}</td>
