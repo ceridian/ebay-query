@@ -4,6 +4,7 @@ angular.module('ui.bootstrap.demo').controller('MsgCtrl', function ($scope, $mod
   $scope.emails = [];
 
   $scope.open = function (email) {
+    console.log(email);
     var modalInstance = $modal.open({
       templateUrl: '/temps/modal.html',
       controller: 'ModalInstanceCtrl',
