@@ -1,55 +1,26 @@
+angular.module('EmailApp', [
+  'ngRoute',
+  'ngSanitize'
+]).config(function ( $routeProvider ) {
+  
+  'use strict';
 
-angular.module('msg', ['bootstrap.ui'])
-.controller('EmailCtrl', function($scope, $http, $modal){
-
-  $scope.emails = [];
-	$scope.isPopupVisible = false;
-
-  $scope.showPopup = function(email) {
-    console.log(email);
-    var modalInstance = $modal.open({
-      templateUrl: '/temps/email.html',
-      controller: 'ModalCtrl',
-      resolve: {
-        emails: function () {
-          return $scope.emails;
-        }
-      }
+  $routeProvider
+    .when('/inbox', {
+      templateUrl: 'views/inbox.html',
+      controller: 'InboxCtrl',
+      controllerAs: 'inbox'
+    })
+    .when('/inbox/email/:id', {
+      templateUrl: 'views/email.html',
+      controller: 'EmailCtrl',
+      controllerAs: 'email'
+    })
+    .otherwise({
+      redirectTo: '/inbox'
     });
-
-    modalInstance.result.then(function (selectedItem) {
-      $scope.selected = selectedItem;
-    }, function () {
-      console.log('Modal dismissed at: ' + new Date());
-    });
-  };
-
-  $scope.closePopup = function() {
-
-  };
-
-  $scope.messages = function(){
-    $http.post('/messages', {store: 'jakes'}).success(function(data, status, headers, config){
-      console.log(data);
-      console.log(data.Messages.Message);
-      $scope.emails = data.Messages.Message;
-    }).error(function(data, status, headers, config) {
-      console.log(data);
-		});
-  }
-  $scope.messages();
-}).controller('ModalCtrl', function ($scope, $modalInstance, emails) {
-
-  $scope.emails = emails;
-  $scope.selected = {
-    item: $scope.emails[0]
-  };
-
-  $scope.ok = function () {
-    $modalInstance.close($scope.selected.email);
-  };
-
-  $scope.cancel = function () {
-    $modalInstance.dismiss('cancel');
-  };
+}).run(function($rootScope){
+  $rootScope.$on('$routeChangeError', function(event, current, previous, rejection){
+    console.log(event, current, previous, rejection)
+  })
 });
