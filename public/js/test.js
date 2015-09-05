@@ -1,4 +1,6 @@
-function EmailController($scope) {
+var app = angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap']);
+
+app.controller('EmailController', function ($scope) {
     $scope.isPopupVisible = false;
     $scope.isComposePopupVisible = false;
     $scope.composeEmail = {};
@@ -107,4 +109,4 @@ function EmailController($scope) {
             body: 'wassup dude'
         }
     ];
-}
+});
