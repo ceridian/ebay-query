@@ -11,6 +11,7 @@ angular.module('ui.bootstrap.demo').controller('ModalDemoCtrl', function ($scope
       animation: $scope.animationsEnabled,
       templateUrl: '/temps/modal.html',
       controller: 'ModalInstanceCtrl',
+      backdrop: false,
       size: size,
       resolve: {
         items: function () {
