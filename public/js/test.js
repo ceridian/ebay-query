@@ -78,6 +78,7 @@ app.controller('EmailController', function ($scope) {
     };
 
     $scope.showPopup = function(email) {
+      console.log(email);
         $scope.isPopupVisible = true;
         $scope.selectedEmail = email;
     };
