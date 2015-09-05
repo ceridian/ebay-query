@@ -33,7 +33,7 @@ angular.module('ui.bootstrap.demo').controller('MsgCtrl', function ($scope, $mod
       console.log(data);
 		});
   }
-  $scope.emails = messages();
+  $scope.emails = $scope.messages();
 });
 
 // Please note that $modalInstance represents a modal window (instance) dependency.
