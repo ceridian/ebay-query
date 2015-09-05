@@ -1,5 +1,5 @@
 angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap']);
-angular.module('ui.bootstrap.demo').controller('MsgCtrl', function ($scope, $modal, $log) {
+angular.module('ui.bootstrap.demo').controller('MsgCtrl', function ($scope, $modal, $log, $http) {
 
   $scope.emails = [];
 
