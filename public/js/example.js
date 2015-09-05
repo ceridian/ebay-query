@@ -4,7 +4,6 @@ angular.module('ui.bootstrap.demo').controller('MsgCtrl', function ($scope, $mod
   $scope.emails = [];
 
   $scope.open = function (email) {
-
     var modalInstance = $modal.open({
       templateUrl: '/temps/modal.html',
       controller: 'ModalInstanceCtrl',
@@ -16,13 +15,12 @@ angular.module('ui.bootstrap.demo').controller('MsgCtrl', function ($scope, $mod
         }
       }
     });
-
     modalInstance.result.then(function (selectedItem) {
       console.log('done with email');
     }, function () {
       $log.info('Modal dismissed at: ' + new Date());
     });
-  };
+  }
 
   $scope.messages = function(){
     $http.post('/messages', {store: 'jakes'}).success(function(data, status, headers, config){
