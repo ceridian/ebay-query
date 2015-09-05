@@ -9,14 +9,33 @@
   </head>
   <body>
 
-<div ng-controller="ModalDemoCtrl">
+<div ng-controller="MsgCtrl">
+  <table class="table table-striped table-bordered table-hover" id="mailTable">
+    <thead>
+      <tr>
+        <th>Flagged</th>
+        <th>UserID</th>
+        <th>Sender</th>
+        <th>Subject</th>
+        <th>Received</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="email in emails" ng-click="showPopup(email)">
+        <td>{{ email.Flagged }}</td>
+        <td>{{ email.RecipientUserID }}</td>
+        <td>{{ email.Sender }}</td>
+        <td>{{ email.Subject }}</td>
+        <td>{{ email.ReceiveDate }}</td>
+      </tr>
+    </tbody>
+  </table>
 
-
-    <button type="button" class="btn btn-default" ng-click="open()">Open me!</button>
+    <!--<button type="button" class="btn btn-default" ng-click="open()">Open me!</button>
     <button type="button" class="btn btn-default" ng-click="open('lg')">Large modal</button>
     <button type="button" class="btn btn-default" ng-click="open('sm')">Small modal</button>
     <button type="button" class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>
-    <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+    <div ng-show="selected">Selection from a modal: {{ selected }}</div>-->
 </div>
   </body>
 </html>
