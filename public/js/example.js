@@ -24,6 +24,7 @@ angular.module('ui.bootstrap.demo').controller('MsgCtrl', function ($scope, $mod
 
   $scope.messages = function(){
     $http.post('/messages', {store: 'jakes'}).success(function(data, status, headers, config){
+      console.log(data);
       $scope.emails = data.Messages.Message;
     }).error(function(data, status, headers, config) {
       console.log(data);
