@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var app = express();
 
 var messages = require('./routes/messages.js');
-var msgDetail = require('./routes/msgDeatail.js');
+var msgDetail = require('./routes/msgDetail.js');
 
 debugFlag = true;
 
