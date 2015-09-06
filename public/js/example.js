@@ -4,7 +4,7 @@ angular.module('ui.bootstrap.demo').controller('MsgCtrl', function ($scope, $mod
   $scope.emails = [];
 
   $scope.open = function (email) {
-    $http.post('/msgDetail', {store: 'jakes'}).success(function(data, status, headers, config){
+    $http.post('/msgDetail', {store: 'jakes', msgID: email.MessageID}).success(function(data, status, headers, config){
       console.log(data);
       $scope.emails = data.Messages.Message;
       var modalInstance = $modal.open({
