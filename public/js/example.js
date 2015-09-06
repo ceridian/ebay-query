@@ -4,7 +4,6 @@ angular.module('ui.bootstrap.demo').controller('MsgCtrl', function ($scope, $mod
   $scope.emails = [];
 
   $scope.open = function (email) {
-    console.log(email);
     var modalInstance = $modal.open({
       templateUrl: '/temps/modal.html',
       controller: 'ModalInstanceCtrl',
@@ -25,8 +24,6 @@ angular.module('ui.bootstrap.demo').controller('MsgCtrl', function ($scope, $mod
 
   $scope.messages = function(){
     $http.post('/messages', {store: 'jakes'}).success(function(data, status, headers, config){
-      console.log(data);
-      console.log(data.Messages.Message);
       $scope.emails = data.Messages.Message;
     }).error(function(data, status, headers, config) {
       console.log(data);
@@ -39,7 +36,6 @@ angular.module('ui.bootstrap.demo').controller('MsgCtrl', function ($scope, $mod
 // It is not the same as the $modal service used above.
 
 angular.module('ui.bootstrap.demo').controller('ModalInstanceCtrl', function ($scope, $modalInstance, email) {
-  console.log(email);
   $scope.ok = function () {
     $modalInstance.close();
   };
