@@ -7,6 +7,7 @@ module.exports = function(app) {
   });
 
   app.post('/messages', function(req, res){
+    console.log(req.body);
     lib.messageSummary(req.body.store, function(err, data){
       if(err){
         res.send(err);
