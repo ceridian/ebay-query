@@ -4,17 +4,33 @@ angular.module('ui.bootstrap.demo').controller('MsgCtrl', function ($scope, $mod
   $scope.emails = [];
 
   $scope.open = function (email) {
-    var modalInstance = $modal.open({
-      templateUrl: '/temps/modal.html',
-      controller: 'ModalInstanceCtrl',
-      backdrop: false,
-      size: 'lg',
-      resolve: {
-        email: function () {
-          return email;
+    $http.post('/messages', {store: 'jakes'}).success(function(data, status, headers, config){
+      console.log(data);
+      $scope.emails = data.Messages.Message;
+      var modalInstance = $modal.open({
+        templateUrl: '/temps/modal.html',
+        controller: 'ModalInstanceCtrl',
+        size: 'lg',
+        resolve: {
+          email: function () {
+            return data;
+          }
         }
-      }
-    });
+      });
+    }).error(function(data, status, headers, config) {
+      var modalInstance = $modal.open({
+        templateUrl: '/temps/error.html',
+        controller: 'ModalInstanceCtrl',
+        size: 'lg',
+        resolve: {
+          email: function () {
+            return data;
+          }
+        }
+      });
+		});
+
+
     modalInstance.result.then(function (selectedItem) {
       console.log('done with email');
     }, function () {

@@ -15,4 +15,14 @@ module.exports = function(app) {
       }
     });
   });
+
+  app.post('/msgDetail', function(req, res){
+    lib.messageDetail(req.body.msgID, req.body.store, function(err, data){
+      if(err){
+        res.send(err);
+      }else{
+        res.send(data);
+      }
+    });
+  });
 }
