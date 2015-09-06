@@ -17,6 +17,12 @@ angular.module('ui.bootstrap.demo').controller('MsgCtrl', function ($scope, $mod
           }
         }
       });
+      modalInstance.result.then(function (selectedItem) {
+        console.log('done with email');
+      }, function () {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
+    }
     }).error(function(data, status, headers, config) {
       var modalInstance = $modal.open({
         templateUrl: '/temps/error.html',
@@ -29,13 +35,6 @@ angular.module('ui.bootstrap.demo').controller('MsgCtrl', function ($scope, $mod
         }
       });
 		});
-
-
-    modalInstance.result.then(function (selectedItem) {
-      console.log('done with email');
-    }, function () {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
   }
 
   $scope.messages = function(){
