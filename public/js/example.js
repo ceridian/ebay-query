@@ -22,7 +22,6 @@ angular.module('ui.bootstrap.demo').controller('MsgCtrl', function ($scope, $mod
       }, function () {
         $log.info('Modal dismissed at: ' + new Date());
       });
-    }
     }).error(function(data, status, headers, config) {
       var modalInstance = $modal.open({
         templateUrl: '/temps/error.html',
