@@ -9,6 +9,7 @@ module.exports = function(app) {
   app.post('/messages', function(req, res){
     var body = req.body;
     var store = body.store;
+    console.log(body, store);
     if(body.length === 0 || store === undefined){
       res.send('no store sent');
     }else{

@@ -6,7 +6,7 @@ describe('/messages', function(){
   it('should return an obj with message summary', function(done){
     request({
       method: 'POST',
-      headers: {content-type: 'application/json'}
+      headers: {'content-type': 'application/json'},
       url: 'http://74.208.149.126:3000/messages',
       body: {store: 'jakes'}
     }, function(err, res, body){
