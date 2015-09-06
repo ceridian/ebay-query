@@ -8,12 +8,11 @@ describe('/messages', function(){
       method: 'POST',
       headers: {'content-type': 'application/json'},
       url: 'http://74.208.149.126:3000/messages',
-      body: {store: 'jakes'}
+      form: {store: 'jakes'}
     }, function(err, res, body){
       expect(err).toBe(null);
 			expect(res).not.toBe(null);
       expect(body).not.toBe(null);
-      console.log(body);
 			done();
     });
   });
