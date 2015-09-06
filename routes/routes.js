@@ -38,5 +38,4 @@ esports.msgDetail = function(req, res){
       }
     });
   }
-});
 }
