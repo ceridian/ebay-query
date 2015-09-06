@@ -6,8 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
-var routes = require('./routes/routes.js');
-
 var app = express();
 
 debugFlag = true;
