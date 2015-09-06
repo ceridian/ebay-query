@@ -27,12 +27,13 @@ module.exports = function(app) {
     if(body.length == 0){
       res.send('no store sent');
     }else{
-    lib.messageDetail(req.body.msgID, req.body.store, function(err, data){
-      if(err){
-        res.send(err);
-      }else{
-        res.send(data);
-      }
-    });
+      lib.messageDetail(req.body.msgID, req.body.store, function(err, data){
+        if(err){
+          res.send(err);
+        }else{
+          res.send(data);
+        }
+      });
+    }
   });
 }
