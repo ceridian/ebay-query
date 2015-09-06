@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
+var messages = require('./routes/messages.js');
+var msgDetail = require('./routes/msgDeatail.js');
+
 debugFlag = true;
 
 // uncomment after placing your favicon in /public
@@ -17,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-require('./routes/router.js')(app);
+app.use('/messages', messages);
+app.use('/msgDetail', msgDetail);
 
 module.exports = app;
