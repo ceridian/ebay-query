@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var routes = require('./routes/routes.js');
+
 var app = express();
 
 debugFlag = true;
@@ -17,7 +19,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-require('./routes/router.js')(app);
-
+//require('./routes/router.js')(app);
+app.get('/', routes.home);
+app.post('/messages', routes.messages);
+app.post('/msgDetail', routes.msgDetail);
 
 module.exports = app;
