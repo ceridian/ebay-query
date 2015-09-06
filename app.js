@@ -23,4 +23,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/messages', messages);
 app.use('/msgDetail', msgDetail);
 
+
 module.exports = app;
