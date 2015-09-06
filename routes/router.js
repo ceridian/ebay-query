@@ -9,7 +9,6 @@ module.exports = function(app) {
   app.post('/messages', function(req, res){
     var body = req.body;
     var store = body.store;
-    console.log(body, store, body.length);
     if(body.length === 0 || store === undefined){
       res.send('no store sent');
     }else{
@@ -25,10 +24,12 @@ module.exports = function(app) {
 
   app.post('/msgDetail', function(req, res){
     var body = req.body;
-    if(body.length == 0){
-      res.send('no store sent');
+    var store = body.store;
+    var msgID = body.msgID;
+    if(body.length === 0 || store === undefined || msgID === undefined){
+      res.send('no store or msgID sent');
     }else{
-      lib.messageDetail(req.body.msgID, req.body.store, function(err, data){
+      lib.messageDetail(msgID, store, function(err, data){
         if(err){
           res.send(err);
         }else{
