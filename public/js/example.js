@@ -79,13 +79,13 @@ app.factory('socket', ['$rootScope', function ($rootScope) {
 						callback.apply(socket, args);
 					}
 				});
-			})
+			});
 		}
 	};
 }]);
 
 app.controller('notifications', ['$rootScope', 'socket', function($rootScope, socket){
-	$rootScope.notes = [];
+  console.log('control');
 	socket.on('alert', function(msg){
 		console.log(msg);
 		//$rootScope.notes.push(msg);
