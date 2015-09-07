@@ -59,19 +59,9 @@ app.controller('MsgCtrl', ['socket', '$modal', '$scope', function(socket, $modal
     });
   //}).error(function(data, status, headers, config) {
   });
-  socket.on('msgDetail', function(data){
-    var modalInstance = $modal.open({
-      templateUrl: '/temps/error.html',
-      controller: 'ModalInstanceCtrl',
-      size: 'lg',
-      resolve: {
-        email: function () {
-          return data;
-        }
-      }
-    });
-  });
+  
   $scope.open = function (email) {
+    console.log(email);
     //$http.post('/msgDetail', {store: 'jakes', msgID: email.MessageID}).success(function(data, status, headers, config){
     socket.emit('msgDetail', {store: 'jakes', msgID: email.MessageID});
   }
