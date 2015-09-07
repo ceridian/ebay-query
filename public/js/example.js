@@ -29,6 +29,10 @@ app.factory('socket', ['$rootScope', function ($rootScope) {
     }
   };
 }]);
+
+app.controller('MsgCtrl', ['socket', '$modal', '$scope' function(socket, $modal, $scope){
+  $scope.emails = [];
+}]);
 /*angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap']);
 
   angular.module('ui.bootstrap.demo').factory('socket', ['$rootScope', function ($rootScope) {
