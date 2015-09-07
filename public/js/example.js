@@ -58,7 +58,7 @@ app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, email) {
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel');
   };
-});
+});*/
 
 app.factory('socket', ['$rootScope', function ($rootScope) {
 	var socket = io.connect();
@@ -82,7 +82,7 @@ app.factory('socket', ['$rootScope', function ($rootScope) {
 			})
 		}
 	};
-}]);*/
+}]);
 
 app.controller('notifications', ['$rootScope', 'socket', function($rootScope, socket){
 	$rootScope.notes = [];
