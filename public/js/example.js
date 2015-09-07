@@ -1,4 +1,4 @@
-(function(){
+
   angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap']);
 
   angular.module('ui.bootstrap.demo').factory('socket', ['$rootScope', function ($rootScope) {
@@ -81,4 +81,3 @@
       $modalInstance.dismiss('cancel');
     };
   });
-})();
