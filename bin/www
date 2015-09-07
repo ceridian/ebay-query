@@ -31,5 +31,6 @@ models.sequelize.sync().then(function () {
   var server = http.createServer(app);
   io = require("socket.io").listen(server);
   server.listen(3000);
+  require('../lib/io.js')(io);
   console.log(3000);
 });
