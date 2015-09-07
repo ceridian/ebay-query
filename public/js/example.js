@@ -1,5 +1,5 @@
 var app = angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap']);
-app.controller('MsgCtrl', function ($scope, $modal, $log, $http) {
+/*app.controller('MsgCtrl', function ($scope, $modal, $log, $http) {
 
   $scope.emails = [];
 
@@ -82,7 +82,7 @@ app.factory('socket', ['$rootScope', function ($rootScope) {
 			})
 		}
 	};
-}]);
+}]);*/
 
 app.controller('notifications', ['$rootScope', 'socket', function($rootScope, socket){
 	$rootScope.notes = [];
