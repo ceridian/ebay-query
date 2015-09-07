@@ -84,15 +84,11 @@ app.factory('socket', ['$rootScope', function ($rootScope) {
 	};
 }]);
 
-app.controller('notifications', ['$rootScope', 'socket', function($rootScope, socket){
+app.controller('MsgCtrl', ['$rootScope', 'socket', '$modal', function($rootScope, socket, $modal){
   console.log('control');
   socket.emit('messages', {store: 'jakes'});
-	socket.on('alert', function(msg){
-		console.log(msg);
-		//$rootScope.notes.push(msg);
-	});
   socket.on('messages', function(data){
-    console.log(data);
+    $scope.emails = data.Messages.Message
   });
   socket.on('error', function(err){
     console.log(err);
