@@ -90,4 +90,10 @@ app.controller('notifications', ['$rootScope', 'socket', function($rootScope, so
 		console.log(msg);
 		//$rootScope.notes.push(msg);
 	});
+  socket.on('messages', function(data){
+    console.log(data);
+  });
+  socket.on('error', function(err){
+    console.log(err);
+  });
 }]);
