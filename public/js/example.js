@@ -1,5 +1,5 @@
-angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap']);
-angular.module('ui.bootstrap.demo').controller('MsgCtrl', function ($scope, $modal, $log, $http) {
+var app = angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap']);
+app.controller('MsgCtrl', function ($scope, $modal, $log, $http) {
 
   $scope.emails = [];
 
@@ -50,7 +50,7 @@ angular.module('ui.bootstrap.demo').controller('MsgCtrl', function ($scope, $mod
 // Please note that $modalInstance represents a modal window (instance) dependency.
 // It is not the same as the $modal service used above.
 
-angular.module('ui.bootstrap.demo').controller('ModalInstanceCtrl', function ($scope, $modalInstance, email) {
+app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, email) {
   $scope.ok = function () {
     $modalInstance.close();
   };
@@ -59,3 +59,35 @@ angular.module('ui.bootstrap.demo').controller('ModalInstanceCtrl', function ($s
     $modalInstance.dismiss('cancel');
   };
 });
+
+app.factory('socket', ['$rootScope', function ($rootScope) {
+	var socket = io.connect();
+	return {
+		on: function (eventName, callback) {
+			socket.on(eventName, function () {
+				var args = arguments;
+				$rootScope.$apply(function () {
+					callback.apply(socket, args);
+				});
+			});
+		},
+		emit: function (eventName, data, callback) {
+			socket.emit(eventName, data, function () {
+				var args = arguments;
+				$rootScope.$apply(function () {
+					if (callback) {
+						callback.apply(socket, args);
+					}
+				});
+			})
+		}
+	};
+}]);
+
+app.controller('notifications', ['$rootScope', 'socket', function($rootScope, socket){
+	$rootScope.notes = [];
+	socket.on('alert', function(msg){
+		console.log(msg);
+		//$rootScope.notes.push(msg);
+	});
+}]);

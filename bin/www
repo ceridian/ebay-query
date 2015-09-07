@@ -5,8 +5,7 @@ var app = require('../app');
 var models = require("../models");
 var http = require('http');
 var lib = require('../lib/lib.js');
-
-
+require('../lib/io.js');
 
 
 /*var e = require('../lib/ebay.js');
