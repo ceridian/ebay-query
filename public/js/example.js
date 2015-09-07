@@ -86,6 +86,7 @@ app.factory('socket', ['$rootScope', function ($rootScope) {
 
 app.controller('notifications', ['$rootScope', 'socket', function($rootScope, socket){
   console.log('control');
+  socket.emit('messages', {store: 'jakes'});
 	socket.on('alert', function(msg){
 		console.log(msg);
 		//$rootScope.notes.push(msg);
