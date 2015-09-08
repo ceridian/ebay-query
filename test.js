@@ -49,7 +49,7 @@ app.post('/messages', function(req, response){
           'X-EBAY-API-COMPATIBILITY-LEVEL': '859',
           'X-EBAY-API-SITEID': '0', // US
           'X-EBAY-API-DEV-NAME': "ccfd19da-b8a8-4636-9583-42aa3ecf6f2a",
-          'X-EBAY-API-CERT-NAME': "c34588c1-cd71-4843-acde-2560c7b326be"
+          'X-EBAY-API-CERT-NAME': "c34588c1-cd71-4843-acde-2560c7b326be",
           'X-EBAY-API-APP-NAME': "jacobvan-87d2-4b6b-b584-4096cdbcd4b0",
           'X-EBAY-API-CALL-NAME': 'GetMyMessages',
           'DetailLevel': 'ReturnHeaders',
