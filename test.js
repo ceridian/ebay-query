@@ -23,7 +23,42 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('port', process.env.PORT || 3000);
 
-app.get('/', function(req, res){
+var token = "AgAAAA**AQAAAA**aAAAAA**fKfnVQ**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6wMkIWoAZaBpQ+dj6x9nY+seQ**KPoCAA**AAMAAA**b8oOXmYz/dhzAbRtvZtJMbay3UvY9p/3dxzGPvpxAFay/FQgWvUGqtY+W8NCddaHMRGFC4XmOJ0W06R/N7IT9fZlvYtoRUuefjEowUaF1Y+wTLAZ21Cg2QGSJ4mM2nsb1Q6wx39xVm8WHNqY4y+T4zc/WmVFXiJxoAB5BW6TyBiJYf0vwAkcKrPxnPLwHcxoUbMsg8aVIn2Teo4xOTnrUZuPm3vmlVb2gxP04m5OwcTdHEDDR9VhjCgq3QGpWOMrMnSDax7KWlxkVMro6lbMuxDXtN6HWbaSfSwsaglklRXfcEB8OC/MV7R2R1Tvjm2bNy6SpCFbhkmtiTgWTncYojHzNRt3Fr+/vLHj9gXvNkQm1tr0JbV49wK4792vHA1HJjAqnpPuWABo/ektM4gRhi1wrtsyzwRDsmwKEyqxoFO2Z+Z/mo0N4JnCxPStGrxW4WljKua2L1RbMwX/zSfwXXufrAn2Yn3rTG/5WoQzP76WyWclCSq9xE3EESdoMGkGKYm4LHEC0+aZfQKyGRL8tGwl3bx2k1T6mvB5EXslhAfrQTvYcNbDZI0kjSOt8JQlOJCt8s/l2RqFaUXFbyRr8OLeah2fv6nlS8BqxNpe0QW/TLneueX3aSSo4Ns/DuxVyX4KX8NnvDjiCPryEHuGZaKVC2m4v9K610dBRS6DoIR1uBB5LhCbpeWH3BCchUBvS9XwFd/IexZpgC+pTuFwTjOqXIovo6pvfkV+sBigcXmSvbrQeAUAm7FmZWnGVDYq";
+var xml = '<?xml version="1.0" encoding="utf-8"?><GetMyMessagesRequest xmlns="urn:ebay:apis:eBLBaseComponents"><RequesterCredentials><eBayAuthToken>'+token+'</eBayAuthToken></RequesterCredentials><DetailLevel>ReturnHeaders</DetailLevel>';
+var postRequest = {
+  host: "api.ebay.com",
+  path: "/ws/api.dll",
+  port: 443,
+  method: "POST",
+  headers: {
+    'X-EBAY-API-COMPATIBILITY-LEVEL': '859',
+    'X-EBAY-API-SITEID': '0', // US
+    'X-EBAY-API-DEV-NAME': "ccfd19da-b8a8-4636-9583-42aa3ecf6f2a",
+    'X-EBAY-API-CERT-NAME': "c34588c1-cd71-4843-acde-2560c7b326be",
+    'X-EBAY-API-APP-NAME': "jacobvan-87d2-4b6b-b584-4096cdbcd4b0",
+    'X-EBAY-API-CALL-NAME': 'GetMyMessages',
+    'DetailLevel': 'ReturnHeaders',
+    'Content-Type': 'text/xml',
+    'Content-Length': Buffer.byteLength(xml)
+  }
+};
+
+var buffer = "";
+var req = http.request( postRequest, function( res )    {
+  console.log( res.statusCode );
+  var buffer = "";
+  res.on( "data", function( data ) { buffer = buffer + data; } );
+  res.on( "end", function( data ) { console.log( buffer ); } );
+});
+
+req.on('error', function(e) {
+  console.log('problem with request: ' + e.message);
+});
+
+req.write( body );
+req.end();
+
+/*app.get('/', function(req, res){
   res.sendFile(path.join(__dirname, '../public', 'home.html'));
 });
 
@@ -34,8 +69,8 @@ app.post('/messages', function(req, response){
   if(body.length === 0 || store === undefined){
     response.send('no store sent');
   }else{
-    models.STORES.findOne({where: {storeName: 'jakes'}, include: [models.TOKENS]}).then(function(res){
-      var token = res.dataValues.TOKEN.dataValues.token;
+    //models.STORES.findOne({where: {storeName: 'jakes'}, include: [models.TOKENS]}).then(function(res){
+      var token = "AgAAAA**AQAAAA**aAAAAA**fKfnVQ**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6wMkIWoAZaBpQ+dj6x9nY+seQ**KPoCAA**AAMAAA**b8oOXmYz/dhzAbRtvZtJMbay3UvY9p/3dxzGPvpxAFay/FQgWvUGqtY+W8NCddaHMRGFC4XmOJ0W06R/N7IT9fZlvYtoRUuefjEowUaF1Y+wTLAZ21Cg2QGSJ4mM2nsb1Q6wx39xVm8WHNqY4y+T4zc/WmVFXiJxoAB5BW6TyBiJYf0vwAkcKrPxnPLwHcxoUbMsg8aVIn2Teo4xOTnrUZuPm3vmlVb2gxP04m5OwcTdHEDDR9VhjCgq3QGpWOMrMnSDax7KWlxkVMro6lbMuxDXtN6HWbaSfSwsaglklRXfcEB8OC/MV7R2R1Tvjm2bNy6SpCFbhkmtiTgWTncYojHzNRt3Fr+/vLHj9gXvNkQm1tr0JbV49wK4792vHA1HJjAqnpPuWABo/ektM4gRhi1wrtsyzwRDsmwKEyqxoFO2Z+Z/mo0N4JnCxPStGrxW4WljKua2L1RbMwX/zSfwXXufrAn2Yn3rTG/5WoQzP76WyWclCSq9xE3EESdoMGkGKYm4LHEC0+aZfQKyGRL8tGwl3bx2k1T6mvB5EXslhAfrQTvYcNbDZI0kjSOt8JQlOJCt8s/l2RqFaUXFbyRr8OLeah2fv6nlS8BqxNpe0QW/TLneueX3aSSo4Ns/DuxVyX4KX8NnvDjiCPryEHuGZaKVC2m4v9K610dBRS6DoIR1uBB5LhCbpeWH3BCchUBvS9XwFd/IexZpgC+pTuFwTjOqXIovo6pvfkV+sBigcXmSvbrQeAUAm7FmZWnGVDYq";
       var xml = '<?xml version="1.0" encoding="utf-8"?><GetMyMessagesRequest xmlns="urn:ebay:apis:eBLBaseComponents"><RequesterCredentials><eBayAuthToken>'+token+'</eBayAuthToken></RequesterCredentials><DetailLevel>ReturnHeaders</DetailLevel>';
       var postRequest = {
         host: "api.ebay.com",
@@ -69,7 +104,7 @@ app.post('/messages', function(req, response){
 
       req.write( body );
       req.end();
-      /*var params = {
+      var params = {
         'authToken': token,
         'DetailLevel': 'ReturnHeaders'
       };
@@ -99,15 +134,15 @@ app.post('/messages', function(req, response){
       request(object, function(err, res, result){
         console.log(err, result);
         response.send(result);
-      });*/
-      /*e.postXML(params, opType, serviceName, function(err, data){
+      });
+      e.postXML(params, opType, serviceName, function(err, data){
         if(err){
           callback(err, null);
         }else{
           callback(null, data);
         }
       });*/
-    }).catch(function(err){
+    /*}).catch(function(err){
       if(debugFlag == true){ console.log('io.js: messageSummary: finding store by name: '+err); };
     });
   }
@@ -136,4 +171,4 @@ models.sequelize.sync().then(function () {
   server.listen(3000);
   //require('../lib/io.js')(io);
   console.log(3000);
-});
+});*/
