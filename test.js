@@ -38,7 +38,7 @@ var postRequest = {
     'X-EBAY-API-APP-NAME': "jacobvan-87d2-4b6b-b584-4096cdbcd4b0",
     'X-EBAY-API-CALL-NAME': 'GetMyMessages',
     'DetailLevel': 'ReturnHeaders',
-    'Content-Type': 'text/xml',
+    'Content-Type': 'application/xml',
     'Content-Length': Buffer.byteLength(xml)
   }
 };
