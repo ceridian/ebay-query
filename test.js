@@ -34,7 +34,7 @@ app.post('/messages', function(req, response){
   if(body.length === 0 || store === undefined){
     response.send('no store sent');
   }else{
-    models.STORES.findOne({where: {storeName: store}, include: [models.TOKENS]}).then(function(res){
+    models.STORES.findOne({where: {storeName: 'jakes'}, include: [models.TOKENS]}).then(function(res){
       var token = res.dataValues.TOKEN.dataValues.token;
       var xml = '<?xml version="1.0" encoding="utf-8"?><GetMyMessagesRequest xmlns="urn:ebay:apis:eBLBaseComponents"><RequesterCredentials><eBayAuthToken>'+token+'</eBayAuthToken></RequesterCredentials><DetailLevel>ReturnHeaders</DetailLevel>';
       var postRequest = {
