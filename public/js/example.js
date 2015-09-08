@@ -41,7 +41,6 @@ app.controller('MsgCtrl', ['socket', '$modal', '$scope', function(socket, $modal
   });
   socket.on('msgDetail', function(data){
     console.log(data);
-    $scope.emails = data.Messages.Message;
     var modalInstance = $modal.open({
       templateUrl: '/temps/modal.html',
       controller: 'ModalInstanceCtrl',
@@ -59,7 +58,7 @@ app.controller('MsgCtrl', ['socket', '$modal', '$scope', function(socket, $modal
     });
   //}).error(function(data, status, headers, config) {
   });
-  
+
   $scope.open = function (email) {
     console.log(email);
     //$http.post('/msgDetail', {store: 'jakes', msgID: email.MessageID}).success(function(data, status, headers, config){
