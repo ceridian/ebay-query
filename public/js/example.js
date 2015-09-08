@@ -1,33 +1,33 @@
 var app = angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap']);
 
 app.factory('socket', ['$rootScope', function ($rootScope) {
-		var socket = io.connect();
-		return {
-			on: function (eventName, callback) {
-				socket.on(eventName, function () {
-					var args = arguments;
-					$rootScope.$apply(function () {
-						callback.apply(socket, args);
-					});
-				});
-			},
-			emit: function (eventName, data, callback) {
-				socket.emit(eventName, data, function () {
-					var args = arguments;
-					$rootScope.$apply(function () {
-						if (callback) {
-							callback.apply(socket, args);
-						}
-					});
-				})
-			}
-		};
-	}]);
+  var socket = io.connect();
+  return {
+    on: function (eventName, callback) {
+      socket.on(eventName, function () {
+        var args = arguments;
+        $rootScope.$apply(function () {
+          callback.apply(socket, args);
+        });
+      });
+    },
+    emit: function (eventName, data, callback) {
+      socket.emit(eventName, data, function () {
+        var args = arguments;
+        $rootScope.$apply(function () {
+          if (callback) {
+            callback.apply(socket, args);
+          }
+        });
+      })
+    }
+  };
+}]);
 
 
 app.controller('MsgCtrl', ['socket', '$modal', '$scope', function(socket, $modal, $scope){
   $scope.emails = [];
-  socket.emit('messages', {store: 'jakes'});
+  socket.emit('messagesGet', {store: 'jakes'});
   socket.on('messages', function(data){
     $scope.emails = data.Messages.Message
   });
