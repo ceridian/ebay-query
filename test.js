@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var models = require("./models");
 var http = require('http');
 var lib = require('./lib/lib.js');
+var request = require('request');
 
 var app = express();
 
@@ -33,12 +34,43 @@ app.post('/messages', function(req, response){
   if(body.length === 0 || store === undefined){
     response.send('no store sent');
   }else{
-    lib.messageSummary(store, function(err, data){
-      if(err){
-        response.send(err);
-      }else{
-        response.send(data);
+    models.STORES.findOne({where: {storeName: store}, include: [models.TOKENS]}).then(function(res){
+      var token = res.dataValues.TOKEN.dataValues.token;
+      var params = {
+        'authToken': token,
+        'DetailLevel': 'ReturnHeaders'
+      };
+      var opType = 'GetMyMessages';
+      var serviceName = 'Trading';
+      var object = {
+        'method': 'POST',
+        'url': 'https://api.ebay.com/ws/api.dll',
+        'headers': {
+          'X-EBAY-API-COMPATIBILITY-LEVEL': '859',
+          'X-EBAY-API-SITEID': '0', // US
+          'X-EBAY-API-DEV-NAME': "ccfd19da-b8a8-4636-9583-42aa3ecf6f2a",
+          'X-EBAY-API-CERT-NAME': "c34588c1-cd71-4843-acde-2560c7b326be"
+          'X-EBAY-API-APP-NAME': "jacobvan-87d2-4b6b-b584-4096cdbcd4b0",
+          'X-EBAY-API-CALL-NAME': 'GetMyMessages',
+          'DetailLevel': 'ReturnHeaders',
+          'RequesterCredentials': {
+            'eBayAuthToken': token
+          }
+        }
       }
+      request(object, function(err, res, result){
+        console.log(err, result);
+        response.send(result);
+      });
+      /*e.postXML(params, opType, serviceName, function(err, data){
+        if(err){
+          callback(err, null);
+        }else{
+          callback(null, data);
+        }
+      });*/
+    }).catch(function(err){
+      if(debugFlag == true){ console.log('io.js: messageSummary: finding store by name: '+err); };
     });
   }
 });
