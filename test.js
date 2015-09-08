@@ -38,9 +38,9 @@ app.post('/messages', function(req, response){
       var token = res.dataValues.TOKEN.dataValues.token;
       var xml = '<?xml version="1.0" encoding="utf-8"?><GetMyMessagesRequest xmlns="urn:ebay:apis:eBLBaseComponents"><RequesterCredentials><eBayAuthToken>'+token+'</eBayAuthToken></RequesterCredentials><DetailLevel>ReturnHeaders</DetailLevel>';
       var postRequest = {
-        host: "https://api.ebay.com",
+        host: "api.ebay.com",
         path: "/ws/api.dll",
-        port: 80,
+        port: 443,
         method: "POST",
         headers: {
           'X-EBAY-API-COMPATIBILITY-LEVEL': '859',
