@@ -1,4 +1,4 @@
-var app = angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap']);
+var app = angular.module('message', []);
 
 app.factory('socket', ['$rootScope', function ($rootScope) {
   var socket = io.connect();
@@ -27,44 +27,21 @@ app.factory('socket', ['$rootScope', function ($rootScope) {
 
 app.controller('MsgCtrl', ['socket', '$modal', '$scope', function(socket, $modal, $scope){
   $scope.emails = [];
+  $scope.modalShow = false;
   socket.emit('messages', {store: 'jakes'});
   socket.on('messages', function(data){
-    $scope.emails = data.Messages.Message
+    $scope.emails = data.Messages.Message;
   });
   socket.on('error', function(err){
     console.log(err);
   });
   socket.on('msgDetail', function(data){
-    console.log(data);
-    var modalInstance = $modal.open({
-      templateUrl: '/temps/modal.html',
-      controller: 'ModalInstanceCtrl',
-      size: 'lg',
-      resolve: {
-        email: data
-      }
-    });
-    modalInstance.result.then(function (selectedItem) {
-      console.log('done with email');
-    }, function () {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
-  //}).error(function(data, status, headers, config) {
+    $scope.modalShow = true;
+    $scope.selectedEmail = data;
   });
 
   $scope.open = function (email) {
     console.log(email);
-    //$http.post('/msgDetail', {store: 'jakes', msgID: email.MessageID}).success(function(data, status, headers, config){
     socket.emit('msgDetail', {store: 'jakes', msgID: email.MessageID});
   }
 }]);
-
-app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, email) {
-  $scope.ok = function () {
-    $modalInstance.close();
-  };
-
-  $scope.cancel = function () {
-    $modalInstance.dismiss('cancel');
-  };
-});
