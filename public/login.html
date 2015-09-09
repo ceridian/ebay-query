@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="login">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,23 +7,33 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>CSR</title>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.js"></script>
+  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.4.js"></script>
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap.js"></script>
+  <script src="/js/twin-bcrypt.min.js"></script>
+  <script src="/js/login.js"></script>
+  <link href="/css/bootstrap.css" rel="stylesheet">
+  <link href="/css/font-awesome.css" rel="stylesheet">
+  <link href="/css/styles.css" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <div class="row">
+    <div class="row" >
       <div class="col-md-4 col-md-offset-4">
         <div class="login-panel panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">Please Sign In</h3>
           </div>
-          <div class="panel-body">
+          <div class="panel-body" ng-controller="LoginCtrl">
             <form role="form">
               <fieldset>
                 <div class="form-group">
-                  <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                  <input class="form-control" placeholder="Username" name="user" type="text" autofocus ng-model="login.user">
                 </div>
                 <div class="form-group">
-                  <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                  <input class="form-control" placeholder="Password" name="pass" type="password" value="" ng-model="login.pass">
                 </div>
                 <div class="checkbox">
                   <label>
@@ -31,7 +41,7 @@
                   </label>
                 </div>
                 <!-- Change this to a button or input when using this as a form -->
-                <a href="index.html" class="btn btn-lg btn-success btn-block">Login</a>
+                <input type="submit" class="btn btn-primary pull-right" value="Login" ng-click="login" />
               </fieldset>
             </form>
           </div>

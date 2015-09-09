@@ -3,6 +3,10 @@ var lib = require('../lib/lib.js');
 
 module.exports = function(app) {
   app.get('/', function(req, res){
+    res.redirect('/login');
+  });
+
+  app.get('/login', function(req, res){
     res.sendFile(path.join(__dirname, '../public', 'home.html'));
   });
 
