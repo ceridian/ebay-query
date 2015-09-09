@@ -1,7 +1,7 @@
 var app = angular.module('login', []);
 
 app.controller('LoginCtrl', ['$http', '$scope', function($http, $scope){
-  this.login = function(main){
+  $scope.login = function(main){
     var user = main.user;
     var pass = main.pass;
     var salt = genSalt(4);
