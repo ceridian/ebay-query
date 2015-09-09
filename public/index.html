@@ -32,8 +32,8 @@
                 </thead>
                 <tbody>
                   <tr ng-repeat="email in emails" ng-click="open(email)">
-                    <td ng-if="email.Flagged == true"><i class="fa fa-flag"></i></td>
-                    <td ng-if="email.Flagged == false"><i class="fa fa-flag-o"></i></td>
+                    <td ng-if="email.Flagged == 'true'"><i class="fa fa-flag"></i></td>
+                    <td ng-if="email.Flagged == 'false'"><i class="fa fa-flag-o"></i></td>
                     <td>{{ email.RecipientUserID }}</td>
                     <td>{{ email.Sender }}</td>
                     <td>{{ email.Subject }}</td>
