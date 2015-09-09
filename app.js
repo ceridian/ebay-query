@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.set('superSecret', 'jfa89g7a0gaouha70aa7ag086g06s7a0hf');
 
 require('./routes/router.js')(app);
 
