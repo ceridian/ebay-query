@@ -42,7 +42,7 @@ app.controller('MsgCtrl', ['socket', '$modal', '$scope', function(socket, $modal
       size: 'lg',
       resolve: {
         email: function () {
-          return data;
+          return $scope.data;
         }
       }
     });
