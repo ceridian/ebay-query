@@ -36,7 +36,7 @@ app.controller('MsgCtrl', ['socket', '$scope', function(socket, $scope){
     console.log(err);
   });
   socket.on('msgDetail', function(data){
-    $scope.selectedEmail = data;
+    $scope.selectedEmail = data.Messages.Message;
     console.log(data);
     $("#emailModal").modal();
   });
