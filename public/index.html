@@ -52,7 +52,7 @@
                       <h5>To: {{selectedEmail.RecipientUserID}}</h5>
                       <h5>Date: {{selectedEmail.ReceiveDate}}</h5>
                       <h5>Message: </h5>
-                      <iframe srcdoc="{{selectedEmail.Text}}"></iframe>
+                      <iframe srcdoc={{selectedEmail.Text}}></iframe>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
