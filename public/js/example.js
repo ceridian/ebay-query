@@ -40,11 +40,12 @@ app.controller('MsgCtrl', ['socket', '$modal', '$scope', function(socket, $modal
       templateUrl: '/temps/modal.html',
       controller: 'ModalInstanceCtrl',
       size: 'lg',
-      resolve: {
+      scope: $scope
+      /*resolve: {
         email: function () {
           return $scope.data;
         }
-      }
+      }*/
     });
     modalInstance.result.then(function (selectedItem) {
       console.log('done with email');
