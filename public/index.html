@@ -144,7 +144,7 @@
                     </tr>
                   </thead>
                   <tbody ng-repeat="email in emails">
-                    <tr  ng-class="{'unread: email.Read'}" ng-click="open(email)">
+                    <tr  ng-class="{'unread': email.Read'}" ng-click="open(email)">
                       <td ng-if="email.Flagged == 'true'"><i class="fa fa-flag"></i></td>
                       <td ng-if="email.Flagged == 'false'"><i class="fa fa-flag-o"></i></td>
                       <td>{{ email.RecipientUserID }}</td>
