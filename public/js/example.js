@@ -41,9 +41,7 @@ app.controller('MsgCtrl', ['socket', '$modal', '$scope', function(socket, $modal
       controller: 'ModalInstanceCtrl',
       size: 'lg',
       resolve: {
-        email: function () {
-          return data;
-        }
+        email: data;
       }
     });
     modalInstance.result.then(function (selectedItem) {
