@@ -25,7 +25,7 @@ app.factory('socket', ['$rootScope', function ($rootScope) {
 }]);
 
 
-app.controller('MsgCtrl', ['socket', '$modal', '$scope', function(socket, $modal, $scope){
+app.controller('MsgCtrl', ['socket', '$modal', '$scope', function(socket, $scope){
   $scope.emails = [];
   $scope.modalShow = false;
   socket.emit('messages', {store: 'jakes'});
