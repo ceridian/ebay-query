@@ -39,7 +39,7 @@ app.controller('MsgCtrl', ['socket', '$scope', function(socket, $scope){
     var mess = data.Messages.Message;
     //var m = $('<div>').html(mess.Text).text();
     //mess.Text = m;
-    var frame = $('#iframe').contents().find('html');
+    var frame = $('#iframe').contents().find('body');
     frame.append(mess.Text);
     $scope.selectedEmail = mess;
     console.log(data);
