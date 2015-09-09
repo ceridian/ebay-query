@@ -38,10 +38,10 @@ app.controller('MsgCtrl', ['socket', '$scope', function(socket, $scope){
   socket.on('msgDetail', function(data){
     $scope.selectedEmail = data;
     $("#emailModal").modal();
+    console.log(email);
   });
 
   $scope.open = function (email) {
-    console.log(email);
     socket.emit('msgDetail', {store: 'jakes', msgID: email.MessageID});
   }
 }]);
