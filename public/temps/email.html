@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <i class="fa fa-envelope fa-fw"></i> Messages
+        <div class="pull-right">
+          <div class="btn-group">
+            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+              Actions
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu pull-right" role="menu">
+              <li>
+                <a href="#">Action</a>
+              </li>
+              <li>
+                <a href="#">Another action</a>
+              </li>
+              <li>
+                <a href="#">Something else here</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div ng-controller="MsgCtrl">
+          <table class="table table-bordered table-hover" id="mailTable">
+            <thead>
+              <tr>
+                <th>Flagged</th>
+                <th>UserID</th>
+                <th>Sender</th>
+                <th>Subject</th>
+                <th>Received</th>
+              </tr>
+            </thead>
+            <tbody ng-repeat="email in emails">
+              <tr  ng-class="{'unread': email.Read}" ng-click="open(email)">
+                <td ng-if="email.Flagged == 'true'"><i class="fa fa-flag"></i></td>
+                <td ng-if="email.Flagged == 'false'"><i class="fa fa-flag-o"></i></td>
+                <td>{{ email.RecipientUserID }}</td>
+                <td>{{ email.Sender }}</td>
+                <td>{{ email.Subject }}</td>
+                <td>{{ email.ReceiveDate }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Subject: {{selectedEmail.Subject}}</h4>
+                </div>
+                <div class="modal-body">
+                  <h5>Sender: {{selectedEmail.Sender}}</h5>
+                  <h5>To: {{selectedEmail.RecipientUserID}}</h5>
+                  <h5>Date: {{selectedEmail.ReceiveDate}}</h5>
+                  <h5>Message: </h5>
+                  <iframe id="iframe" style="width:100%; height:500px"></iframe>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary"><i class="fa fa-reply"></i> Reply</button>
+                  <button type="button" class="btn btn-primary"><i class="fa fa-share"></i> Forward</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

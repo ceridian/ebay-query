@@ -7,12 +7,11 @@ var http = require('http');
 var lib = require('../lib/lib.js');
 require('../lib/io.js');
 
-app.set('port', process.env.PORT || 3000);
 
 models.sequelize.sync().then(function () {
   var server = http.createServer(app);
-  io = require("socket.io").listen(server);
-  server.listen(3000);
+  var io = require("socket.io").listen(server);
+  server.listen(process.env.PORT);
   require('../lib/io.js')(io);
-  console.log(3000);
+  console.log(process.env.PORT);
 });

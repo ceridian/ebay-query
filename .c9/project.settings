@@ -1,0 +1,46 @@
+{
+    "ace": {
+        "@guessTabSize": false,
+        "@newLineMode": "unix",
+        "@tabSize": 2,
+        "@useSoftTabs": false
+    },
+    "build": {
+        "@builder": "auto",
+        "@path": "/.c9/builders",
+        "@saveall": true
+    },
+    "find.nak": {
+        "@searchLimit": 100
+    },
+    "general": {
+        "@stripws": false
+    },
+    "language": {
+        "@eslintrc": "true",
+        "@instanceHighlight": "true",
+        "@semi": "true",
+        "@undeclaredVars": "true",
+        "@unusedFunctionArgs": "false",
+        "@warnLevel": "info"
+    },
+    "run": {
+        "@path": "/.c9/runners",
+        "configs": {
+            "@inited": "true",
+            "json()": {
+                "node start": {
+                    "command": "/home/ubuntu/workspace/bin/www",
+                    "debug": true,
+                    "name": "node start",
+                    "runner": "Node 0.10.x"
+                }
+            }
+        }
+    },
+    "share": {
+        "@app": false,
+        "@preview": false,
+        "@useOwnerSettings": false
+    }
+}
