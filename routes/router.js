@@ -7,7 +7,15 @@ module.exports = function(app) {
   });
 
   app.get('/login', function(req, res){
-    console.log(JSON.stringify(req.params));
+    var pass1 = req.params.pass;
+    var user1 = req.params.user;
+    console.log(pass1, user1);
+    var pass2 = req.param('pass');
+    var user2 = req.param('user');
+    console.log(pass2, user2);
+    var pass3 = req.param.pass;
+    var user3 = req.param.user;
+    console.log(pass3, user3);
   });
 
   app.post('/messages', function(req, response){
