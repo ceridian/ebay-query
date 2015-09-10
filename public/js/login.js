@@ -1,6 +1,8 @@
 var app = angular.module('login', []);
 
 app.controller('LoginCtrl', ['$http', '$scope', function($http, $scope){
+  $scope.pass = '';
+  $scope.user = '';
   $scope.login = function(){
 
     var salt = '$2y$04$STZa7rpdGZI4CK59fwQbMO'
