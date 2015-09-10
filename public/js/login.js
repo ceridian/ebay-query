@@ -11,7 +11,7 @@ app.controller('LoginCtrl', ['$http', '$scope', function($http, $scope){
     console.log(pass);
     var hash = TwinBcrypt.hashSync(pass, salt);
     console.log(hash);
-    $http.get('/login/'+hash+'/'+user, {user: user, pass: pass}).success(function(data, status, headers, config){
+    $http.get('/login?pass='+hash+'&user='+user, {user: user, pass: pass}).success(function(data, status, headers, config){
 
     }).error(function(data, status, headers, config) {
       console.log(data.status);
