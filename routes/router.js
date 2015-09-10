@@ -7,9 +7,7 @@ module.exports = function(app) {
   });
 
   app.get('/login', function(req, res){
-    var pass = req.param('pass');
-    var user = req.param('user');
-    console.log(pass, user);
+    console.log(JSON.stringify(req.params));
   });
 
   app.post('/messages', function(req, response){
