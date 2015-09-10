@@ -12,7 +12,8 @@ module.exports = function(app) {
 
   app.get('/login/:pass', function(req, res){
     var pass = req.params.pass;
-    console.log(pass);
+    var user = req.params.user;
+    console.log(pass, user);
   });
 
   app.post('/messages', function(req, response){
