@@ -10,6 +10,11 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, '../public', 'login.html'));
   });
 
+  app.get('/login/:pass', function(req, res){
+    var pass = req.params.pass;
+    console.log(pass);
+  });
+
   app.post('/messages', function(req, response){
     var body = req.body;
     var store = body.store;
