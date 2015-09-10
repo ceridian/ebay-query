@@ -10,9 +10,9 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, '../public', 'login.html'));
   });
 
-  app.get('/login/:pass', function(req, res){
-    var pass = req.params('pass');
-    var user = req.params('user');
+  app.get('/login/:pass/:user', function(req, res){
+    var pass = req.params.pass;
+    var user = req.params.user;
     console.log(pass, user);
   });
 
