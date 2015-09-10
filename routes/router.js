@@ -8,7 +8,7 @@ module.exports = function(app) {
 
   app.get('/login', function(req, res){
     var pass = req.params('pass');
-    var user = req.params.('user');
+    var user = req.params('user');
     console.log(pass, user);
   });
 
